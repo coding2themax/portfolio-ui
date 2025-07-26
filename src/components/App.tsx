@@ -1,4 +1,5 @@
 import React from 'react';
+import Portfolio from './Portfolio';
 import './App.css';
 
 interface AppProps {}
@@ -6,15 +7,16 @@ interface AppProps {}
 const App: React.FC<AppProps> = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Portfolio UI</h1>
-        <p>
-          Welcome to your React TypeScript application built with Webpack!
-        </p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </header>
+      <Portfolio
+        name="John Doe"
+        title="Full Stack Developer"
+        email="john.doe@example.com"
+        phone="+1 (555) 123-4567"
+        location="San Francisco, CA"
+        github="https://github.com/johndoe"
+        linkedin="https://linkedin.com/in/johndoe"
+        website="https://johndoe.dev"
+      />
     </div>
   );
 };

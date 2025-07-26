@@ -1,6 +1,6 @@
 # Portfolio UI
 
-A modern React TypeScript application built with Webpack and managed with pnpm.
+A modern, responsive portfolio website built with React TypeScript, Webpack, and pnpm. Features a comprehensive layout with sections for showcasing skills, experience, projects, and contact information.
 
 ## Features
 
@@ -10,6 +10,42 @@ A modern React TypeScript application built with Webpack and managed with pnpm.
 - **ESLint** for code linting
 - **CSS Loader** for styling
 - Hot module replacement for development
+- **Responsive Design** - Works on desktop, tablet, and mobile devices
+- **Modern Portfolio Layout** with multiple sections:
+  - Hero/Header section with personal information
+  - About section
+  - Skills showcase with categorized technologies
+  - Experience timeline
+  - Projects grid with links and technologies
+  - Contact section
+  - Professional footer
+
+## Portfolio Components
+
+### Portfolio Component
+
+The main `Portfolio` component (`src/components/Portfolio.tsx`) provides a complete portfolio layout with the following props:
+
+```typescript
+interface PortfolioProps {
+  name: string; // Your full name
+  title: string; // Your professional title
+  email: string; // Contact email
+  phone?: string; // Phone number (optional)
+  location?: string; // Your location (optional)
+  github?: string; // GitHub profile URL (optional)
+  linkedin?: string; // LinkedIn profile URL (optional)
+  website?: string; // Personal website URL (optional)
+}
+```
+
+### Customization
+
+The portfolio includes sample data for projects, skills, and experience that can be easily customized by editing the arrays in the Portfolio component:
+
+- `projects` - Array of your projects with titles, descriptions, technologies, and links
+- `skills` - Categorized list of your technical skills
+- `experiences` - Your work experience with company details and descriptions
 
 ## Prerequisites
 
@@ -57,17 +93,34 @@ Make sure you have the following installed:
 ```
 portfolio-ui/
 ├── public/
-│   └── index.html          # HTML template
+│   └── index.html              # HTML template
 ├── src/
-│   ├── App.tsx             # Main App component
-│   ├── App.css             # App styles
-│   ├── index.tsx           # Application entry point
-│   └── index.css           # Global styles
-├── webpack.config.js       # Webpack configuration
-├── tsconfig.json          # TypeScript configuration
-├── .eslintrc.js           # ESLint configuration
-└── package.json           # Package configuration
+│   ├── components/
+│   │   ├── App.tsx             # Main App component
+│   │   ├── App.css             # App styles
+│   │   ├── Portfolio.tsx       # Portfolio layout component
+│   │   └── Portfolio.css       # Portfolio component styles
+│   ├── assets/
+│   │   └── images/             # Image assets
+│   ├── index.tsx               # Application entry point
+│   └── index.css               # Global styles
+├── webpack.config.js           # Webpack configuration
+├── tsconfig.json              # TypeScript configuration
+├── .eslintrc.js               # ESLint configuration
+└── package.json               # Package configuration
 ```
+
+## Usage
+
+To customize the portfolio with your information:
+
+1. Edit the props passed to the `Portfolio` component in `src/components/App.tsx`
+2. Update the sample data arrays in `src/components/Portfolio.tsx`:
+   - `projects` - Your projects and work samples
+   - `skills` - Your technical skills organized by category
+   - `experiences` - Your work history and achievements
+3. Replace the sample images in `src/assets/images/` with your own
+4. Customize the styling in `src/components/Portfolio.css` to match your personal brand
 
 ## Development
 
