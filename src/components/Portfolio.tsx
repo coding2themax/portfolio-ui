@@ -5,7 +5,6 @@ interface PortfolioProps {
   name: string;
   title: string;
   email: string;
-  phone?: string;
   location?: string;
   github?: string;
   linkedin?: string;
@@ -27,13 +26,12 @@ interface Skill {
   items: string[];
 }
 
-interface Experience {
+interface Education {
   id: number;
-  company: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  description: string[];
+  institution: string;
+  degree: string;
+  field: string;
+  year: string;
   location?: string;
 }
 
@@ -41,7 +39,6 @@ const Portfolio: React.FC<PortfolioProps> = ({
   name,
   title,
   email,
-  phone,
   location,
   github,
   linkedin,
@@ -51,75 +48,80 @@ const Portfolio: React.FC<PortfolioProps> = ({
   const projects: Project[] = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/example/ecommerce"
+      title: "Customer Payment Application",
+      description: "Enterprise payment processing system built with React frontend and Java backend for major consulting client",
+      technologies: ["React", "Java", "Spring Framework", "REST APIs", "Security"],
+      githubUrl: "https://github.com/coding2themax/payment-system"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates",
-      technologies: ["React", "Socket.io", "Express", "MongoDB"],
-      githubUrl: "https://github.com/example/taskapp"
+      title: "RabbitMQ Service Broker",
+      description: "Open Service Broker implementation using Spring Cloud framework to enable secure RabbitMQ connectivity without admin access",
+      technologies: ["Java", "Spring Cloud", "RabbitMQ", "Kubernetes", "Helm"],
+      githubUrl: "https://github.com/coding2themax/rabbitmq-broker"
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with data visualization",
-      technologies: ["React", "Chart.js", "Weather API", "CSS Grid"],
-      liveUrl: "https://weather-example.com"
+      title: "GitOps CI/CD Pipeline",
+      description: "Automated deployment pipeline with GitLab runners, container scanning, and Kubernetes deployment using Helm charts",
+      technologies: ["GitLab CI/CD", "Docker", "Kubernetes", "Helm", "Security Scanning"],
+      githubUrl: "https://github.com/coding2themax/gitops-pipeline"
+    },
+    {
+      id: 4,
+      title: "API Gateway Integration Platform",
+      description: "Multi-vendor API gateway solution integrating IBM Service Registry, MuleSoft AnyPoint, and Kong with custom security layer",
+      technologies: ["Java", "Spring Security", "Kong", "MuleSoft", "API Management"],
+      githubUrl: "https://github.com/coding2themax/api-gateway-platform"
+    },
+    {
+      id: 5,
+      title: "Infrastructure Automation Suite",
+      description: "Ansible and Puppet automation scripts for managing 2,000+ virtual machines with configuration management",
+      technologies: ["Ansible", "Puppet", "Linux", "Configuration Management", "VM Automation"],
+      githubUrl: "https://github.com/coding2themax/infrastructure-automation"
+    },
+    {
+      id: 6,
+      title: "Portfolio Website",
+      description: "Modern, responsive portfolio website built with React TypeScript and Webpack showcasing professional experience",
+      technologies: ["React", "TypeScript", "Webpack", "CSS3", "Responsive Design"],
+      liveUrl: "https://maxquinones.dev",
+      githubUrl: "https://github.com/coding2themax/portfolio-ui"
     }
   ];
 
   const skills: Skill[] = [
     {
-      category: "Frontend",
-      items: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Sass", "Webpack"]
+      category: "Programming & Frameworks",
+      items: ["Java", "Spring Framework", "JavaScript", "HTML", "React", "TypeScript", "Perl", "SQL", "Lawson 4GL"]
     },
     {
-      category: "Backend",
-      items: ["Node.js", "Express", "Python", "Django", "REST APIs", "GraphQL"]
+      category: "DevOps & Infrastructure",
+      items: ["Kubernetes", "Docker", "Helm", "Puppet", "Ansible", "CI/CD", "GitOps", "Maven", "Jenkins", "GitLab"]
     },
     {
-      category: "Database",
-      items: ["PostgreSQL", "MongoDB", "MySQL", "Redis"]
+      category: "Messaging & APIs",
+      items: ["RabbitMQ", "REST APIs", "API Gateways", "Kong", "MuleSoft AnyPoint", "IBM Service Registry", "Spring Cloud"]
     },
     {
-      category: "Tools & Others",
-      items: ["Git", "Docker", "AWS", "Jest", "CI/CD", "Agile"]
+      category: "Testing & Quality",
+      items: ["Test Driven Design", "JUnit", "Spring Test", "Unit Testing", "Integration Testing", "Performance Testing", "Security Scans"]
+    },
+    {
+      category: "Cloud & Systems",
+      items: ["Linux", "Public Cloud", "Containers", "TC Server", "Virtual Machines", "Configuration Management"]
     }
   ];
 
-  const experiences: Experience[] = [
+  const education: Education[] = [
     {
       id: 1,
-      company: "Tech Solutions Inc.",
-      position: "Senior Frontend Developer",
-      startDate: "2022",
-      endDate: "Present",
-      location: "San Francisco, CA",
-      description: [
-        "Led development of customer-facing web applications using React and TypeScript",
-        "Collaborated with UX/UI designers to implement responsive and accessible interfaces",
-        "Mentored junior developers and conducted code reviews",
-        "Improved application performance by 40% through optimization techniques"
-      ]
-    },
-    {
-      id: 2,
-      company: "Digital Agency Co.",
-      position: "Full Stack Developer",
-      startDate: "2020",
-      endDate: "2022",
-      location: "Remote",
-      description: [
-        "Developed and maintained multiple client websites and web applications",
-        "Built RESTful APIs using Node.js and Express",
-        "Implemented automated testing and deployment pipelines",
-        "Worked directly with clients to gather requirements and provide technical solutions"
-      ]
+      institution: "Arizona State University",
+      degree: "Bachelor's Degree",
+      field: "Computer Information Systems",
+      year: "2008",
+      location: "WP School Of Business"
     }
   ];
 
@@ -135,7 +137,6 @@ const Portfolio: React.FC<PortfolioProps> = ({
               <span className="email">
                 <a href={`mailto:${email}`}>{email}</a>
               </span>
-              {phone && <span className="phone">{phone}</span>}
               {location && <span className="location">{location}</span>}
             </div>
             <div className="social-links">
@@ -164,11 +165,13 @@ const Portfolio: React.FC<PortfolioProps> = ({
         <div className="container">
           <h2>About Me</h2>
           <p className="about-text">
-            I'm a passionate full-stack developer with over 4 years of experience building 
-            modern web applications. I love creating efficient, scalable solutions and 
-            staying up-to-date with the latest technologies. When I'm not coding, you can 
-            find me exploring new frameworks, contributing to open-source projects, or 
-            hiking in nature.
+            Passionate software engineer with 18+ years of experience in coding, 9+ years in Java, 
+            Spring, SQL, REST API, and Kubernetes. Currently serving as Senior Consultant at Deloitte, 
+            with previous leadership roles at State Farm Insurance where I led development teams and 
+            implemented enterprise solutions. Based in Phoenix, AZ, I specialize in creating scalable 
+            applications, implementing DevOps practices, and building cloud-native solutions. 
+            I have extensive experience with containerization, API management, and mentoring development teams 
+            while maintaining the highest engineering standards.
           </p>
         </div>
       </section>
@@ -188,34 +191,6 @@ const Portfolio: React.FC<PortfolioProps> = ({
                     </span>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="experience-section">
-        <div className="container">
-          <h2>Experience</h2>
-          <div className="experience-timeline">
-            {experiences.map((exp) => (
-              <div key={exp.id} className="experience-item">
-                <div className="experience-header">
-                  <h3>{exp.position}</h3>
-                  <div className="company-info">
-                    <span className="company">{exp.company}</span>
-                    {exp.location && <span className="location">• {exp.location}</span>}
-                  </div>
-                  <div className="date-range">
-                    {exp.startDate} - {exp.endDate}
-                  </div>
-                </div>
-                <ul className="experience-description">
-                  {exp.description.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
@@ -266,6 +241,30 @@ const Portfolio: React.FC<PortfolioProps> = ({
                       </a>
                     )}
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section className="education-section">
+        <div className="container">
+          <h2>Education</h2>
+          <div className="education-timeline">
+            {education.map((edu) => (
+              <div key={edu.id} className="education-item">
+                <div className="education-header">
+                  <h3>{edu.degree}</h3>
+                  <div className="institution-info">
+                    <span className="institution">{edu.institution}</span>
+                    {edu.location && <span className="school-location">• {edu.location}</span>}
+                  </div>
+                  <div className="year">{edu.year}</div>
+                </div>
+                <div className="field-of-study">
+                  <span className="field">{edu.field}</span>
                 </div>
               </div>
             ))}
